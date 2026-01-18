@@ -10,8 +10,14 @@ const addTocart= createSlice({
     reducers:{
         addItem:(state)=>{
             state.value+=1;
+        },
+        removeItem:(state)=>{
+            state.value>0 ? state.value-=1 : null ;
+        },
+        clearItem:(state)=>{
+            state.value=0;
         }
     }
 })
-export const {addItem} = addTocart.actions;
+export const {addItem , removeItem , clearItem} = addTocart.actions;
 export default addTocart.reducer

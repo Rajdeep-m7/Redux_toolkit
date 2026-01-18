@@ -109,3 +109,30 @@
 .add-to-cart:hover {
   background-color: #333;
 }
+
+.remove-cart {
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  background-color:#ba2727;
+  margin-top: 10px;
+}
+
+.remove-cart:hover {
+  background-color: #ff3b3b;
+}
+.clear-btn {
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  
+}
