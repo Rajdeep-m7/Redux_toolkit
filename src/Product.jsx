@@ -1,30 +1,47 @@
-import React from "react";
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "./redux/slice";
+import { fetchProducts } from "./redux/productSlice";
 
 function Product() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+  const productSelector = useSelector((state) => state.products.items);
   return (
-    <div>
-      <div className="product-card">
-        <img
-          src="https://imgs.search.brave.com/Nb9MR-573OdnAOnlETvLeolpblYnapoSoKDpurEeHRs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMubXludGFzc2V0/cy5jb20vZHByXzIs/cV82MCx3XzIxMCxj/X2xpbWl0LGZsX3By/b2dyZXNzaXZlL2Fz/c2V0cy9pbWFnZXMv/MjAyNS9TRVBURU1C/RVIvMjQvTXI2akZx/cjJfYWM0Y2E0ZjEx/Mzg2NGFhMmIxMDhk/ZDk4ZjgzMDg3N2Qu/anBn"
-          alt="Product Image"
-          className="product-image"
-        />
+    <div className="product">
+      {productSelector.map((item) => (
+        <div key={item.id} className="product-card">
+          <img
+            src={item.thumbnail}
+            alt="Product Image"
+            className="product-image"
+          />
 
-        <div className="product-info">
-          <p className="product-description">
-            Comfortable everyday sneakers made with premium materials.
-          </p>
+          <div className="product-info">
+            <p className="product-description">
+              {item.title}
+            </p>
+            <h2 className="product-category">{item.category}</h2>
 
-          <p className="product-price">$79.99</p>
+            <p className="product-price">{item.price}</p>
 
-          <button onClick={()=>dispatch(addItem(1)) } className="add-to-cart">Add to Cart</button>
-          <button onClick={()=>dispatch(removeItem(1)) } className="remove-cart">Remove Cart</button>
+            <button
+              onClick={() => dispatch(addItem(1))}
+              className="add-to-cart"
+            >
+              Add to Cart
+            </button>
+            <button
+              onClick={() => dispatch(removeItem(1))}
+              className="remove-cart"
+            >
+              Remove Cart
+            </button>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 }
