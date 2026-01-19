@@ -1,5 +1,6 @@
 import React from "react";
 import AddToCart from "./AddToCart";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -7,9 +8,7 @@ function Header() {
       <div className="logo">MyShop</div>
 
       <nav className="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Shop</a>
-        <a href="#">Contact</a>
+        <Link to={'/'}>Home</Link>
       </nav>
       <AddToCart />
     </header>

@@ -9,6 +9,7 @@ function Product() {
     dispatch(fetchProducts());
   }, [dispatch]);
   const productSelector = useSelector((state) => state.products.items);
+  const cartSelector = useSelector((state)=> state.cart.items);
   return (
     <div className="product">
       {productSelector.map((item) => (
@@ -26,19 +27,22 @@ function Product() {
             <h2 className="product-category">{item.category}</h2>
 
             <p className="product-price">{item.price}</p>
-
+            {cartSelector.find(cartItem => cartItem.id === item.id)?
             <button
-              onClick={() => dispatch(addItem(1))}
+              className="remove-cart"
+               onClick={() => dispatch(removeItem(item))}
+            >
+              Remove from cart
+            </button>
+            :
+            <button
+              onClick={() => dispatch(addItem(item))}
               className="add-to-cart"
             >
               Add to Cart
             </button>
-            <button
-              onClick={() => dispatch(removeItem(1))}
-              className="remove-cart"
-            >
-              Remove Cart
-            </button>
+            }
+            
           </div>
         </div>
       ))}
