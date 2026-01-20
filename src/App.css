@@ -216,6 +216,20 @@
   font-weight: bold;
   color: #333;
 }
+.order-btn {
+  background: #275792;
+  border: none;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.order-item{
+  display: flex;
+  justify-content: space-between ;
+  margin-top: 10px;
+}
 
 .remove-item-btn {
   background: #ff4d4f;
